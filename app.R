@@ -121,6 +121,7 @@ ui <- fluidPage(
                        tags$li(a(href="http://www.tropmedres.ac/researchers/researcher/lisa-white","Professor Lisa J White, "), a(href="mailto:lisa@tropmedres.ac","lisa@tropmedres.ac"))
                      ))
   ),
+  fluidRow(column(7,tableOutput(outputId = "TABLE"))),
   fluidRow(plotOutput(outputId = "MODEL")),
   br(),
   br(),
@@ -423,6 +424,10 @@ server <- function(input, output, session) {
     lines(c(2018,2018),c(-maxy,2*maxy),col="dark grey",lty=3,lwd=2)
     
   }
+  
+  output$TABLE <- renderTable({
+    matrix(1:8, 2,4)
+  })
   
   output$MODEL <- renderPlot({
     plotR()
